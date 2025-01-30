@@ -35,7 +35,7 @@ body {
 .options {
   width: 100vw;
   height: 20vh;
-  background-color: #000000;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
