@@ -8,9 +8,13 @@ function createGrid(size) {
   for (let i = 0; i < size ** 2; i++) {
     const divBox = document.createElement("div");
     divBox.classList.add("box");
+    divBox.style.opacity = 0;
 
     divBox.addEventListener("mouseenter", (e) => {
-      e.target.style.backgroundColor = "#000000";
+      e.target.style.backgroundColor = `hsl(${Math.round(
+        Math.random() * 360
+      )}, 69%, 47%)`;
+      e.target.style.opacity = Number(e.target.style.opacity) + 0.1;
     });
 
     divBox.style.height = `calc(80vh / ${size})`;
@@ -37,5 +41,4 @@ button.addEventListener("click", () => {
   }
 });
 
-// Initial grid setup
 createGrid(boxNumberPerSide);
