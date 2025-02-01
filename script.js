@@ -2,19 +2,23 @@ const container = document.querySelector(".container");
 const button = document.querySelector(".box-number");
 let boxNumberPerSide = 16;
 
+let isDraw = false;
+document.addEventListener("mousedown", () => (isDraw = true));
+document.addEventListener("mouseup", () => (isDraw = false));
+
 function createGrid(size) {
   container.innerHTML = "";
 
   for (let i = 0; i < size ** 2; i++) {
     const divBox = document.createElement("div");
     divBox.classList.add("box");
-    divBox.style.opacity = 0;
 
-    divBox.addEventListener("mouseenter", (e) => {
-      e.target.style.backgroundColor = `hsl(${Math.round(
-        Math.random() * 360
-      )}, 69%, 47%)`;
-      e.target.style.opacity = Number(e.target.style.opacity) + 0.1;
+    divBox.addEventListener("mouseover", (e) => {
+      if (isDraw) {
+        e.target.style.backgroundColor = `hsl(${Math.round(
+          Math.random() * 360
+        )}, 69%, 47%)`;
+      }
     });
 
     divBox.style.height = `calc(80vh / ${size})`;
